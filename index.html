@@ -67,7 +67,8 @@
 
         #tab1:checked ~ .tab-container .tab-label[for="tab1"],
         #tab2:checked ~ .tab-container .tab-label[for="tab2"],
-        #tab3:checked ~ .tab-container .tab-label[for="tab3"] {
+        #tab3:checked ~ .tab-container .tab-label[for="tab3"],
+        #tab4:checked ~ .tab-container .tab-label[for="tab4"] {
             background: linear-gradient(45deg, #48dbfb, #54a0ff);
             transform: scale(1.15);
             animation: tabPulse 0.5s ease infinite alternate;
@@ -85,7 +86,8 @@
 
         #tab1:checked ~ .page1,
         #tab2:checked ~ .page2,
-        #tab3:checked ~ .page3 {
+        #tab3:checked ~ .page3,
+        #tab4:checked ~ .page4 {
             display: block;
         }
 
@@ -734,19 +736,334 @@
             0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
             50% { transform: translateY(-20px) rotate(10deg) scale(1.2); }
         }
+
+        /* ===== 페이지 4 스타일: 펭귄 눈빛 ===== */
+        .page4 {
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: penguinNight 6s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes penguinNight {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .penguin-title {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2rem, 7vw, 4.5rem);
+            color: #fff;
+            text-shadow:
+                0 0 10px #00d9ff,
+                0 0 20px #00d9ff,
+                0 0 40px #00d9ff,
+                4px 4px 0 #ff6b6b;
+            animation: penguinTitlePulse 1s ease infinite alternate;
+            text-align: center;
+            letter-spacing: 8px;
+        }
+
+        @keyframes penguinTitlePulse {
+            0% { transform: scale(1) rotate(-1deg); filter: brightness(1); }
+            100% { transform: scale(1.05) rotate(1deg); filter: brightness(1.3); }
+        }
+
+        .giant-penguin {
+            font-size: clamp(8rem, 25vw, 15rem);
+            animation: penguinWaddle 0.6s ease infinite;
+            display: inline-block;
+            filter: drop-shadow(0 20px 40px rgba(0,217,255,0.5));
+        }
+
+        @keyframes penguinWaddle {
+            0%, 100% { transform: rotate(-15deg) translateX(-10px); }
+            50% { transform: rotate(15deg) translateX(10px); }
+        }
+
+        .eye-effect {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(0,217,255,0.6) 30%, rgba(255,107,107,0.3) 60%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: eyeGlow 2s ease infinite;
+        }
+
+        .eye1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .eye2 { top: 25%; right: 8%; animation-delay: 0.5s; }
+        .eye3 { bottom: 30%; left: 5%; animation-delay: 1s; }
+        .eye4 { bottom: 20%; right: 10%; animation-delay: 1.5s; }
+
+        @keyframes eyeGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
+        .hypno-text {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: #fff;
+            text-align: center;
+            animation: hypnoWave 2s ease infinite;
+            text-shadow: 0 0 20px #ff6b6b;
+        }
+
+        @keyframes hypnoWave {
+            0%, 100% { transform: scale(1) skewX(0deg); color: #00d9ff; }
+            25% { transform: scale(1.1) skewX(5deg); color: #ff6b6b; }
+            50% { transform: scale(1.2) skewX(0deg); color: #feca57; }
+            75% { transform: scale(1.1) skewX(-5deg); color: #ff9ff3; }
+        }
+
+        .adelie-box {
+            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,217,255,0.2));
+            border: 5px solid #00d9ff;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 30px 20px;
+            max-width: 700px;
+            box-shadow:
+                0 0 30px rgba(0,217,255,0.5),
+                0 0 60px rgba(0,217,255,0.3),
+                inset 0 0 30px rgba(0,217,255,0.1);
+            animation: adelieBoxPulse 2s ease infinite alternate;
+        }
+
+        @keyframes adelieBoxPulse {
+            from { box-shadow: 0 0 30px rgba(0,217,255,0.5), 0 0 60px rgba(0,217,255,0.3); transform: scale(1); }
+            to { box-shadow: 0 0 50px rgba(255,107,107,0.6), 0 0 80px rgba(255,107,107,0.4); transform: scale(1.02); }
+        }
+
+        .penguin-intro {
+            font-family: 'Comic Neue', cursive;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: #fff;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .penguin-intro strong {
+            color: #00d9ff;
+            font-size: 1.3em;
+            text-shadow: 0 0 10px #00d9ff;
+        }
+
+        .crazy-phrase {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #ff6b6b;
+            text-shadow:
+                0 0 10px #ff6b6b,
+                0 0 20px #ff6b6b,
+                4px 4px 0 #feca57;
+            animation: crazyShake 0.3s ease infinite;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        @keyframes crazyShake {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            50% { transform: rotate(-3deg) scale(1.05); }
+            75% { transform: rotate(3deg) scale(1.15); }
+        }
+
+        .feel-it {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2rem, 6vw, 4rem);
+            background: linear-gradient(90deg, #00d9ff, #ff6b6b, #feca57, #ff9ff3, #00d9ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowText 2s ease infinite;
+            text-align: center;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .flying-penguins {
+            position: fixed;
+            font-size: 3rem;
+            animation: flyPenguin 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .fp1 { top: 20%; left: 5%; animation-delay: 0s; }
+        .fp2 { top: 40%; right: 3%; animation-delay: 1s; }
+        .fp3 { top: 60%; left: 8%; animation-delay: 2s; }
+        .fp4 { top: 80%; right: 6%; animation-delay: 3s; }
+
+        @keyframes flyPenguin {
+            0%, 100% { transform: translateY(0) rotate(-20deg) scale(1); }
+            50% { transform: translateY(-50px) rotate(20deg) scale(1.3); }
+        }
+
+        .final-name-penguin {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(4rem, 12vw, 8rem);
+            color: #fff;
+            text-shadow:
+                0 0 20px #00d9ff,
+                0 0 40px #00d9ff,
+                0 0 60px #ff6b6b,
+                6px 6px 0 #feca57;
+            animation: finalNameShine 1s ease infinite;
+            text-align: center;
+            letter-spacing: 20px;
+        }
+
+        @keyframes finalNameShine {
+            0%, 100% { transform: scale(1) rotate(-2deg); filter: brightness(1) hue-rotate(0deg); }
+            50% { transform: scale(1.1) rotate(2deg); filter: brightness(1.5) hue-rotate(30deg); }
+        }
+
+        .bowing-penguins {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .bowing-penguin {
+            font-size: 4rem;
+            animation: bowDown 1s ease infinite;
+        }
+
+        .bowing-penguin:nth-child(1) { animation-delay: 0s; }
+        .bowing-penguin:nth-child(2) { animation-delay: 0.1s; }
+        .bowing-penguin:nth-child(3) { animation-delay: 0.2s; }
+        .bowing-penguin:nth-child(4) { animation-delay: 0.3s; }
+        .bowing-penguin:nth-child(5) { animation-delay: 0.4s; }
+        .bowing-penguin:nth-child(6) { animation-delay: 0.5s; }
+        .bowing-penguin:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes bowDown {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(10px); }
+        }
+
+        .dizzy-spiral {
+            font-size: 5rem;
+            animation: spiralSpin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spiralSpin {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(360deg) scale(1.2); }
+        }
     </style>
 </head>
 <body>
     <!-- 탭 라디오 버튼 -->
-    <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab4" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab1" class="tab-radio">
     <input type="radio" name="tabs" id="tab2" class="tab-radio">
     <input type="radio" name="tabs" id="tab3" class="tab-radio">
 
     <!-- 탭 네비게이션 -->
     <div class="tab-container">
+        <label for="tab4" class="tab-label">🐧 ADELIE 🐧</label>
         <label for="tab1" class="tab-label">🔍 MYSTERY 🔍</label>
         <label for="tab2" class="tab-label">💖 LOVE 💖</label>
         <label for="tab3" class="tab-label">🐢 GODDESS 🐢</label>
+    </div>
+
+    <!-- 페이지 4: 펭귄 눈빛 (아델리) -->
+    <div class="page page4">
+        <!-- 눈빛 이펙트 -->
+        <div class="eye-effect eye1"></div>
+        <div class="eye-effect eye2"></div>
+        <div class="eye-effect eye3"></div>
+        <div class="eye-effect eye4"></div>
+
+        <!-- 날아다니는 펭귄들 -->
+        <div class="flying-penguins fp1">🐧</div>
+        <div class="flying-penguins fp2">🐧</div>
+        <div class="flying-penguins fp3">🐧</div>
+        <div class="flying-penguins fp4">🐧</div>
+
+        <div class="container">
+            <h1 class="penguin-title">🐧 펭귄들 조차 엎드린다는 🐧</h1>
+
+            <div class="giant-penguin">🐧</div>
+
+            <div class="adelie-box">
+                <p class="penguin-intro">
+                    <strong>미니</strong>의 거부할 수 없는 눈빛<br><br>
+                    마치 <strong style="color: #ff6b6b; font-size: 1.5em;">아델리</strong> 같은 그 눈!
+                </p>
+            </div>
+
+            <div class="bowing-penguins">
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+            </div>
+
+            <h2 class="feel-it">우리는 느낀다...</h2>
+
+            <div class="adelie-box">
+                <p class="hypno-text" style="font-size: clamp(2rem, 6vw, 3.5rem);">
+                    아델리의 왕! 👑
+                </p>
+                <br>
+                <p class="penguin-intro">
+                    정신이 혼미해지는 그 눈빛!
+                </p>
+                <p class="hypno-text" style="font-size: clamp(2rem, 6vw, 3.5rem);">
+                    모든 펭귄이 빠져든다! 🦄
+                </p>
+                <br>
+            </div>
+
+            <div style="margin: 30px 0; text-align: center;">
+                <span class="dizzy-spiral">😵‍💫</span>
+                <span class="dizzy-spiral" style="animation-delay: 0.3s;">🌀</span>
+                <span class="dizzy-spiral" style="animation-delay: 0.6s;">😵‍💫</span>
+            </div>
+
+            <div style="text-align: center;">
+                <p class="crazy-phrase">미쳐따!</p><br>
+                <p class="crazy-phrase" style="animation-delay: 0.5s;">귀엽따!</p><br>
+                <p class="crazy-phrase" style="animation-delay: 1s;">너는 빠져든다!</p>
+            </div>
+
+            <div class="bowing-penguins" style="margin: 40px 0;">
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+                <span class="bowing-penguin">🐧</span>
+            </div>
+
+            <h2 class="feel-it" style="margin: 20px 0;">오늘도 우리는...</h2>
+
+            <h1 class="final-name-penguin">김 ✨ 민 ✨ 희✨!!!</h1>
+
+            <div class="marquee" style="background: linear-gradient(90deg, #0c0c0c, #16213e, #0c0c0c);">
+                <div class="marquee-content" style="color: #00d9ff;">
+                    🐧 펭귄도 엎드린다 🐧 아델리의 왕 🐧 거부할 수 없는 눈빛 🐧 미쳐따! 귀엽따! 🐧 김민희 🐧 펭귄도 엎드린다 🐧 아델리의 왕 🐧
+                </div>
+            </div>
+
+            <p class="page2-footer" style="color: #00d9ff; text-shadow: 0 0 20px #00d9ff;">
+                🐧 아델리 펭귄도 인정한 눈빛 🐧
+            </p>
+        </div>
     </div>
 
     <!-- 페이지 1: 그것이 궁금하다 -->
@@ -768,13 +1085,14 @@
                     천재적인 두뇌를 가지고 있는데<br>
                     <span style="color: #feca57; font-size: 1.3em;">왜 가장 아름답기까지 한것인가!</span>
                 </p>
-            </div>
+            </div>  
 
             <p class="reveal-text">🔍 미스테리가 오늘 풀린다! 🔍</p>
 
             <div class="mystery-box">
                 <p class="reveal-text" style="margin-bottom: 30px;">그것은 바로!</p>
 
+                <div class="mystery-item">🐢 무엄한 거북이의 누나</div>
                 <div class="mystery-item">✨ 민희의 독보적인 존재감</div>
                 <div class="mystery-item">🍑 섹시한 엉덩이</div>
                 <div class="mystery-item">💋 백만불짜리 입술</div>
@@ -785,7 +1103,7 @@
 
             <h1 class="final-reveal">이게 바로<br>김✨ 민✨ 희✨</h1>
 
-            <div class="marquee" style="background: linear-gradient(90deg, #ff4757, #1a1a2e);">
+            <div class="marquee" style="background: linear-gradient(90deg, #131212, #1a1a2e);">
                 <div class="marquee-content" style="color: #feca57;">
                     🔍 그것이 궁금하다 🔍 미스테리 해결 🔍 김민희의 아름다움의 비밀 🔍 독보적 존재감 🔍 백만불짜리 입술 🔍 압도적 눈웃음 🔍
                 </div>
