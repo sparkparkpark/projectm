@@ -79,7 +79,8 @@
         #tab2:checked ~ .tab-container .tab-label[for="tab2"],
         #tab3:checked ~ .tab-container .tab-label[for="tab3"],
         #tab4:checked ~ .tab-container .tab-label[for="tab4"],
-        #tab5:checked ~ .tab-container .tab-label[for="tab5"] {
+        #tab5:checked ~ .tab-container .tab-label[for="tab5"],
+        #tab6:checked ~ .tab-container .tab-label[for="tab6"] {
             background: linear-gradient(45deg, #48dbfb, #54a0ff);
             transform: scale(1.15);
             animation: tabPulse 0.5s ease infinite alternate;
@@ -99,8 +100,260 @@
         #tab2:checked ~ .page2,
         #tab3:checked ~ .page3,
         #tab4:checked ~ .page4,
-        #tab5:checked ~ .page5 {
+        #tab5:checked ~ .page5,
+        #tab6:checked ~ .page6 {
             display: block;
+        }
+
+        /* 페이지 6: 비상! 곤듀 응급 스타일 */
+        .page6 {
+            background: linear-gradient(135deg, #87CEEB, #b3e5fc, #81d4fa, #e0f7fa, #87CEEB);
+            background-size: 400% 400%;
+            animation: skyShift 6s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes skyShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .emergency-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 비상 경고등 효과 */
+        .emergency-siren {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: sirenFlash 2s ease-in-out infinite;
+        }
+
+        @keyframes sirenFlash {
+            0%, 100% { background: rgba(255, 100, 100, 0.0); }
+            25% { background: rgba(255, 100, 100, 0.06); }
+            50% { background: rgba(255, 200, 200, 0.04); }
+            75% { background: rgba(255, 100, 100, 0.06); }
+        }
+
+        .emergency-title {
+            font-family: 'Bangers', cursive;
+            font-size: 5rem;
+            color: #e53935;
+            text-shadow: 0 0 20px rgba(229,57,53,0.6), 0 0 40px rgba(229,57,53,0.3), 3px 3px 0 #fff;
+            animation: emergencyBlink 0.8s ease-in-out infinite alternate;
+            letter-spacing: 15px;
+            margin-bottom: 30px;
+        }
+
+        @keyframes emergencyBlink {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.85; transform: scale(1.05); }
+        }
+
+        .emoji-row {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            letter-spacing: 10px;
+            animation: emojiWiggle 2s ease-in-out infinite;
+        }
+
+        .emoji-row.wiggle2 { animation-delay: 0.3s; }
+        .emoji-row.wiggle3 { animation-delay: 0.6s; }
+
+        @keyframes emojiWiggle {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-5px) rotate(-2deg); }
+            75% { transform: translateY(5px) rotate(2deg); }
+        }
+
+        .emoji-scatter {
+            font-size: 2rem;
+            margin: 8px 0;
+            letter-spacing: 15px;
+        }
+
+        .emergency-card {
+            background: rgba(255, 253, 240, 0.9);
+            border: 3px solid #e53935;
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 650px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(229, 57, 53, 0.15);
+            animation: cardPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(229, 57, 53, 0.15); }
+            50% { box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2), 0 0 35px rgba(229, 57, 53, 0.25); }
+        }
+
+        .emergency-card .line {
+            font-size: 1.6rem;
+            color: #333;
+            margin: 12px 0;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .emergency-card .line.highlight {
+            color: #e53935;
+            font-size: 1.9rem;
+            text-shadow: 1px 1px 0 rgba(229, 57, 53, 0.15);
+        }
+
+        .emergency-card .line.golden {
+            color: #f57f17;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 0 rgba(245, 127, 23, 0.15);
+        }
+
+        .emergency-card .line.action {
+            color: #1565c0;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 0 rgba(21, 101, 192, 0.15);
+            margin-top: 25px;
+        }
+
+        .emergency-card .line.big-action {
+            color: #ad1457;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 0 rgba(173, 20, 87, 0.15);
+            animation: actionPop 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes actionPop {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .emergency-divider {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e53935, transparent);
+            margin: 20px auto;
+            border: none;
+        }
+
+        .healing-section {
+            margin-top: 25px;
+            padding: 25px;
+            background: rgba(76, 175, 80, 0.12);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+        }
+
+        .healing-section .line {
+            color: #2e7d32 !important;
+        }
+
+        .healing-section .line.finale {
+            font-size: 2.5rem !important;
+            color: #e53935 !important;
+            animation: healPulse 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes healPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* 날아다니는 이모지 */
+        .flying-emergency {
+            position: fixed;
+            font-size: 2.8rem;
+            z-index: 0;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .fly-e1 { animation: flyEmoji1 6s linear infinite; top: 15%; }
+        .fly-e2 { animation: flyEmoji2 8s linear infinite; top: 35%; }
+        .fly-e3 { animation: flyEmoji3 7s linear infinite; top: 55%; }
+        .fly-e4 { animation: flyEmoji4 5s linear infinite; top: 75%; }
+        .fly-e5 { animation: flyEmoji5 9s linear infinite; top: 25%; }
+        .fly-e6 { animation: flyEmoji6 6.5s linear infinite; top: 65%; }
+        .fly-e7 { animation: flyEmoji1 7.5s linear infinite; top: 45%; animation-delay: 1s; }
+        .fly-e8 { animation: flyEmoji2 5.5s linear infinite; top: 85%; animation-delay: 0.5s; }
+        .fly-e9 { animation: flyEmoji3 8.5s linear infinite; top: 10%; animation-delay: 2s; }
+        .fly-e10 { animation: flyEmoji5 6s linear infinite; top: 50%; animation-delay: 1.5s; }
+        .fly-e11 { animation: flyEmoji6 7s linear infinite; top: 90%; animation-delay: 3s; }
+        .fly-e12 { animation: flyEmoji1 9s linear infinite; top: 70%; animation-delay: 2.5s; }
+
+        @keyframes flyEmoji1 {
+            0% { transform: translateX(-100px) rotate(0deg); left: -100px; }
+            100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); left: 0; }
+        }
+        @keyframes flyEmoji2 {
+            0% { transform: translateX(calc(100vw + 100px)) rotate(0deg); right: -100px; left: auto; }
+            100% { transform: translateX(calc(-100vw - 200px)) rotate(-360deg); right: 0; left: auto; }
+        }
+        @keyframes flyEmoji3 {
+            0% { transform: translateX(-100px) rotate(0deg) scale(1); left: -100px; }
+            50% { transform: translateX(50vw) rotate(180deg) scale(1.5); left: 0; }
+            100% { transform: translateX(calc(100vw + 100px)) rotate(360deg) scale(1); left: 0; }
+        }
+        @keyframes flyEmoji4 {
+            0% { transform: translateY(-100px) rotate(0deg); top: -100px; left: 30%; }
+            100% { transform: translateY(calc(100vh + 100px)) rotate(720deg); top: 0; left: 60%; }
+        }
+        @keyframes flyEmoji5 {
+            0% { transform: translateX(-100px) translateY(0) rotate(0deg); left: -100px; }
+            50% { transform: translateX(50vw) translateY(-50px) rotate(180deg); left: 0; }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(0) rotate(360deg); left: 0; }
+        }
+        @keyframes flyEmoji6 {
+            0% { transform: translateX(calc(100vw + 100px)) translateY(0); right: -100px; left: auto; }
+            50% { transform: translateX(50vw) translateY(-30px); }
+            100% { transform: translateX(-200px) translateY(0); right: 0; left: auto; }
+        }
+
+        /* 하트비트 라인 */
+        .heartbeat-line {
+            width: 200px;
+            height: 60px;
+            margin: 20px auto;
+        }
+
+        .heartbeat-line svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .heartbeat-path {
+            fill: none;
+            stroke: #e53935;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawHeartbeat 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(229, 57, 53, 0.5));
+        }
+
+        @keyframes drawHeartbeat {
+            0% { stroke-dashoffset: 300; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -300; }
         }
 
         .container {
@@ -1252,7 +1505,8 @@
 </head>
 <body>
     <!-- 탭 라디오 버튼 -->
-    <input type="radio" name="tabs" id="tab5" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab6" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab5" class="tab-radio">
     <input type="radio" name="tabs" id="tab4" class="tab-radio">
     <input type="radio" name="tabs" id="tab1" class="tab-radio">
     <input type="radio" name="tabs" id="tab2" class="tab-radio">
@@ -1260,11 +1514,88 @@
 
     <!-- 탭 네비게이션 -->
     <div class="tab-container">
+        <label for="tab6" class="tab-label">🚨 비상 🚨</label>
         <label for="tab5" class="tab-label">🏥 OPEN 🏥</label>
         <label for="tab4" class="tab-label">🐧 ADELIE 🐧</label>
         <label for="tab1" class="tab-label">🔍 MYSTERY 🔍</label>
         <label for="tab2" class="tab-label">💖 LOVE 💖</label>
         <label for="tab3" class="tab-label">🐢 GODDESS 🐢</label>
+    </div>
+
+    <!-- 페이지 6: 비상! 곤듀 -->
+    <div class="page page6">
+        <div class="emergency-siren"></div>
+
+        <!-- 날아다니는 이모지들 -->
+        <div class="flying-emergency fly-e1">🚑</div>
+        <div class="flying-emergency fly-e2">🐰</div>
+        <div class="flying-emergency fly-e3">💊</div>
+        <div class="flying-emergency fly-e4">🐢</div>
+        <div class="flying-emergency fly-e5">🩺</div>
+        <div class="flying-emergency fly-e6">🐧</div>
+        <div class="flying-emergency fly-e7">💉</div>
+        <div class="flying-emergency fly-e8">🌟</div>
+        <div class="flying-emergency fly-e9">🏥</div>
+        <div class="flying-emergency fly-e10">💪</div>
+        <div class="flying-emergency fly-e11">❤️‍🩹</div>
+        <div class="flying-emergency fly-e12">🧸</div>
+
+        <div class="emergency-container">
+            <div class="emergency-title">🚨 비상! 🚨</div>
+
+            <div class="emoji-row">🚑 🚨 🏥 🚑 🚨 🏥</div>
+
+            <div class="heartbeat-line">
+                <svg viewBox="0 0 200 60">
+                    <path class="heartbeat-path" d="M0,30 L40,30 L50,10 L60,50 L70,10 L80,50 L90,30 L130,30 L140,10 L150,50 L160,10 L170,50 L180,30 L200,30"/>
+                </svg>
+            </div>
+
+            <div class="emergency-card">
+                <div class="emoji-scatter">🐢 💕 🐧 💕 🐢 💕 🐧</div>
+
+                <p class="line highlight">💖 우리의 곤듀 💖</p>
+                <p class="line">🐢🐢🐢 거북이들의 여신 🐢🐢🐢</p>
+                <p class="line">🐧 아델리도 인정한 🐧</p>
+                <p class="line golden">🌟 우주최강 미니킴 🌟</p>
+
+                <div class="emoji-scatter">✨ 👑 ✨ 👑 ✨</div>
+
+                <hr class="emergency-divider">
+
+                <p class="line highlight">😢 그녀가 아프다 😢</p>
+                <p class="line highlight">😭 우리는 슬프다 😭</p>
+
+                <div class="emoji-scatter">💧 🥺 💧 🥺 💧</div>
+
+                <hr class="emergency-divider">
+
+                <div class="emoji-row wiggle2">🏃‍♂️ 💨 🏃‍♀️ 💨 🏃 💨</div>
+
+                <p class="line action">🐢🐢 헬씨는 출동한다 🐢🐢</p>
+                <p class="line big-action">🐰 그녀를 위한 토끼간을 구하러!!! 🐰</p>
+
+                <div class="emoji-scatter">🐇 🔥 🐇 🔥 🐇 🔥 🐇</div>
+
+                <div class="healing-section">
+                    <div class="emoji-row wiggle3">🌸 🌼 🌺 🌷 🌻 🌸</div>
+                    <p class="line">🙏 아프지마요 곤듀님 🙏</p>
+                    <p class="line finale">💪 오늘은 튼튼 뿌뿌 💪</p>
+                    <div class="emoji-scatter">❤️ 🧡 💛 💚 💙 💜 🩷</div>
+                    <div class="emoji-row">🩹 💊 🍀 ☘️ 🍀 💊 🩹</div>
+                </div>
+            </div>
+
+            <div class="emoji-row wiggle2">🌈 ☀️ 🌤️ ⛅ 🌈</div>
+
+            <div class="heartbeat-line">
+                <svg viewBox="0 0 200 60">
+                    <path class="heartbeat-path" d="M0,30 L40,30 L50,10 L60,50 L70,10 L80,50 L90,30 L130,30 L140,10 L150,50 L160,10 L170,50 L180,30 L200,30"/>
+                </svg>
+            </div>
+
+            <div class="emoji-row wiggle3">🐢 🐧 🐰 💖 🐰 🐧 🐢</div>
+        </div>
     </div>
 
     <!-- 페이지 5: 김민희 신경과 -->
