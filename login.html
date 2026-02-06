@@ -167,16 +167,30 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // 해시 함수 (SHA-256)
+        async function hash(str) {
+            const msgBuffer = new TextEncoder().encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // 미리 해시된 값 (평문 노출 방지)
+        const validIdHash = '1dc669c2bf59dfe7cec9192acfe5bd2e2f58b9f6c7e7ba1d4b1fb63e3a0e49b6';
+        const validPwHash = '1dc669c2bf59dfe7cec9192acfe5bd2e2f58b9f6c7e7ba1d4b1fb63e3a0e49b6';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const userId = document.getElementById('userId').value;
             const userPw = document.getElementById('userPw').value;
             const errorMsg = document.getElementById('errorMsg');
 
-            // 고정 아이디/비번 체크
-            if (userId === '1214' && userPw === '1214') {
-                // 로그인 성공 - 세션 저장
+            // 입력값 해시화 후 비교
+            const idHash = await hash(userId);
+            const pwHash = await hash(userPw);
+
+            if (idHash === validIdHash && pwHash === validPwHash) {
                 sessionStorage.setItem('loggedIn', 'true');
                 window.location.href = 'index.html';
             } else {
